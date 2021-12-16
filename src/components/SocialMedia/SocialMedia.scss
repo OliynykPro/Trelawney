@@ -1,3 +1,4 @@
+@import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
 .social-media {
@@ -13,12 +14,51 @@
   }
 
   span.media-wrapper {
+    position: relative;
+    margin-right: 1.5rem;
+    padding-right: 1.5rem;
+
+    &:last-child {
+      margin-right: 0;
+      padding-right: 0;
+
+      &:after {
+        content: none;
+      }
+    }
+
+    &:after {
+      content: "";
+      right: 0;
+      top: 50%;
+      width: 2px;
+      height: 16px;
+      opacity: 0.2;
+      position: absolute;
+      border-radius: $br-2;
+      background-color: white;
+      transform: translateY(-50%);
+    }
+
     a {
       display: flex;
       font-size: 1rem;
+      font-weight: 500;
       align-items: center;
       color: $color-white;
       text-decoration: none;
+      @include transition();
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      span {
+        &.icon {
+          line-height: 0;
+          margin-right: 0.5rem;
+        }
+      }
     }
   }
 }

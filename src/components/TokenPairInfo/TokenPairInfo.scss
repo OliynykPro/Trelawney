@@ -1,0 +1,46 @@
+@import "../../styles/variables.scss";
+
+.token-pair-info {
+  div.main-info {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    div {
+      &:first-child {
+        display: flex;
+        align-items: center;
+        .circle {
+          width: 48px;
+          height: 48px;
+          margin-right: 1rem;
+        }
+
+        span {
+          &.stablecoin {
+            display: block;
+            line-height: 1;
+            font-weight: 500;
+            font-size: 1.25rem;
+          }
+
+          &.altcoin {
+            opacity: 0.4;
+            line-height: 1;
+            font-weight: 400;
+            font-size: 0.75rem;
+            color: $color-black;
+          }
+        }
+      }
+      &.price-info {
+        text-align: right;
+        span {
+          &.price {
+            font-weight: 500;
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+}
