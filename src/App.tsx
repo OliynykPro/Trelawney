@@ -1,9 +1,10 @@
 import { Col, Row } from "react-flexbox-grid";
 import "./App.scss";
+import Header from "./components/Header/Header";
 
 function App() {
   window.contract
-    .get_price_data({ asset_ids: [] })
+    .get_price_data({ asset_ids: ["RUS"] })
     .then((res: any) => {
       console.log("res", res);
     })
@@ -13,8 +14,10 @@ function App() {
 
   return (
     <div className="App">
-      <Row center="xs" className="container">
-        <Col xs={12}>Trelawney</Col>
+      <Row className="container" center="xs">
+        <Col xs={12}>
+          <Header />
+        </Col>
       </Row>
     </div>
   );

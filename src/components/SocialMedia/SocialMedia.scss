@@ -1,0 +1,24 @@
+@import "../../styles/variables.scss";
+
+.social-media {
+  display: flex;
+  &.left {
+    justify-content: start;
+  }
+  &.center {
+    justify-content: center;
+  }
+  &.right {
+    justify-content: right;
+  }
+
+  span.media-wrapper {
+    a {
+      display: flex;
+      font-size: 1rem;
+      align-items: center;
+      color: $color-white;
+      text-decoration: none;
+    }
+  }
+}
