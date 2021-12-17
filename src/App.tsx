@@ -9,6 +9,7 @@ import Mockup from "./components/TokenPairInfo/Mockup/Mockup";
 import TokenPairInfo from "./components/TokenPairInfo/TokenPairInfo";
 
 import "./App.scss";
+import { useInterval } from "./hooks/useInterval";
 
 interface IPrice {
   decimals: number;
@@ -20,41 +21,67 @@ interface IPriceData {
   price: IPrice;
 }
 
-// {
-//   "BTC": 39.3,
-//   "ETH": 908,
-//   "NEAR:": 909
-// }
+interface IPercentData {
+  [key: string]: number;
+}
+
+const percentObj: IPercentData = {
+  BTC: -7.41,
+  ETH: -2.43,
+  NEAR: 1.88,
+};
 
 function App() {
   const [priceData, setPriceData] = useState<Array<IPriceData> | null>(null);
-  const [percentData, setPercentData] = useState();
+  const [percentData, setPercentData] = useState<IPercentData>(percentObj);
 
   const bigNumToNumber = (bigN: string, dec: number) => {
     return new Big(bigN).div(new Big(10).pow(dec)).toNumber();
   };
 
-  const getPrice = () => {
-    window.contract
-      .get_price_data({ asset_ids: ["BTC", "ETH", "NEAR"] })
-      .then((res: any) => {
-        setPriceData(res.prices);
-      })
-      .catch((err: any) => {
-        console.log("err", err);
-      });
-  };
-
   // const getPercent = (prev: number, current: number) => {
+  //   console.log("prev", prev);
+  //   console.log("current", current);
   //   return 100 * Math.abs((current - prev) / ((current + prev) / 2));
   // };
 
-  useEffect(() => {
-    getPrice();
+  const getOraclePrice = () => {
+    return window.contract.get_price_data({
+      asset_ids: ["BTC", "ETH", "NEAR"],
+    });
+  };
 
-    setInterval(() => {
-      getPrice();
-    }, 20000);
+  useInterval(async () => {
+    getOraclePrice().then((data: any) => {
+      // priceData &&
+      //   data.prices.map((currentBlockchain: any) => {
+      //     console.log("curBlck", currentBlockchain);
+      //     const item = data.prices.find(
+      //       (p: any) => p.asset_id === currentBlockchain.asset_id
+      //     );
+      //     const newPrice = bigNumToNumber(
+      //       item.price.multiplier,
+      //       item.price.decimals
+      //     );
+
+      //     const oldPrice = priceData.find(
+      //       (i) => i.asset_id === currentBlockchain.asset_id
+      //     )?.price;
+
+      //     const op = bigNumToNumber(
+      //       oldPrice?.multiplier || "",
+      //       oldPrice?.decimals || 0
+      //     );
+
+      //   });
+      setPriceData([...data.prices]);
+    });
+  }, 2000);
+
+  useEffect(() => {
+    getOraclePrice().then((data: any) => {
+      setPriceData([...data.prices]);
+    });
   }, []);
 
   return (
@@ -67,29 +94,25 @@ function App() {
               {priceData &&
                 priceData !== null &&
                 priceData.map((card: IPriceData, index: number) => {
-                  console.log("card", card);
                   return (
                     <Col xs={12} sm={12} md={6} key={index}>
                       <Card>
                         <TokenPairInfo
                           asset_id={card.asset_id}
-                          // price={Number(card.price.multiplier)}
                           price={bigNumToNumber(
                             card.price.multiplier,
                             card.price.decimals
                           )}
-                          // price={"34332432"}
+                          percent={percentData[card.asset_id] as any}
                         />
                       </Card>
                     </Col>
                   );
                 })}
-
               {priceData &&
                 priceData !== null &&
                 priceData.length < 4 &&
                 priceData.map((card: IPriceData, index: number) => {
-                  console.log("card", card);
                   return (
                     <Col xs={12} sm={12} md={6} key={index}>
                       <Card>

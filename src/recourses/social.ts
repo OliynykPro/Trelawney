@@ -2,11 +2,11 @@ export const socialMedia = [
   {
     title: "GitHub",
     image: "git",
-    link: "https://github.com/",
+    link: "https://github.com/Sergei2404/price-oracle/",
   },
   {
     title: "API",
     image: "api",
-    link: "https://api.com/",
+    link: "https://trelawney-api.herokuapp.com/prices/",
   },
 ];
