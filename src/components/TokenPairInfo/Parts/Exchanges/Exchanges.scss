@@ -3,6 +3,16 @@
   margin-top: 1rem;
   text-align: right;
 
+  svg {
+    width: 24px;
+    height: auto;
+    margin-right: 1rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
   .circle {
     margin-right: 1rem;
 

@@ -1,14 +1,67 @@
 @import "../../styles/variables.scss";
 
 .token-pair-info {
+  &.mockup {
+    div.main-info {
+      div {
+        &:first-child {
+          span {
+            &.stablecoin {
+              width: 35px;
+              height: 15px;
+              overflow: hidden;
+              color: $color-grey;
+              background-color: $color-grey;
+            }
+
+            &.altcoin {
+              opacity: 1;
+              width: 55px;
+              height: 8px;
+              overflow: hidden;
+              color: $color-grey;
+              display: inline-block;
+              background-color: $color-grey;
+            }
+          }
+        }
+        &.price-info {
+          span {
+            &.price {
+              width: 131px;
+              height: 15px;
+              overflow: hidden;
+              color: $color-grey;
+              display: inline-block;
+              background-color: $color-grey;
+            }
+
+            &.sticker {
+              width: 66px;
+              height: 15px;
+              overflow: hidden;
+              border-radius: 0;
+              color: $color-grey;
+              display: inline-block;
+              background-color: $color-grey;
+            }
+          }
+        }
+      }
+    }
+  }
+
   div.main-info {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 30% 70%;
 
     div {
       &:first-child {
         display: flex;
         align-items: center;
+        svg {
+          margin-right: 1rem;
+        }
         .circle {
           width: 48px;
           height: 48px;
@@ -38,6 +91,7 @@
           &.price {
             font-weight: 500;
             font-size: 1.25rem;
+            margin-right: 0.75rem;
           }
         }
       }
