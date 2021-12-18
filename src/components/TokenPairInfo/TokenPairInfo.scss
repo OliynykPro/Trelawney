@@ -98,3 +98,54 @@
     }
   }
 }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .sticker {
+    font-size: 1rem !important;
+  }
+
+  .token-pair-info {
+    div.main-info {
+      grid-template-columns: 40% 60%;
+      div.price-info {
+        span.price {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .sticker {
+    font-size: 1rem !important;
+  }
+
+  .token-pair-info {
+    div.main-info {
+      grid-template-columns: 40% 60%;
+      div.price-info {
+        span.price {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .sticker {
+    font-size: 1rem !important;
+  }
+
+  .token-pair-info {
+    div.main-info {
+      grid-template-columns: 40% 60%;
+      div.price-info {
+        span.price {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
