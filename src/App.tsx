@@ -26,9 +26,9 @@ interface IPercentData {
 }
 
 const percentObj: IPercentData = {
-  BTC: -7.41,
-  ETH: -2.43,
-  NEAR: 1.88,
+  BTC: -1.85,
+  ETH: -0.11,
+  NEAR: -6.95,
 };
 
 function App() {
