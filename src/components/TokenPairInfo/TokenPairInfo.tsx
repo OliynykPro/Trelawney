@@ -40,8 +40,8 @@ const TokenPairInfo: React.FC<ITokenPairInfo> = ({
         <div>
           {getImage(asset_id)}
           <div>
-            <span className="stablecoin">Dai</span>
-            <span className="altcoin">{asset_id}</span>
+            <span className="stablecoin">{asset_id}</span>
+            <span className="altcoin">Dai</span>
           </div>
         </div>
         <div className="price-info">
